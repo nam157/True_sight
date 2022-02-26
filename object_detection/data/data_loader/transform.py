@@ -2,8 +2,8 @@ from utils.augmentation import Compose, ConvertFromInts, ToAbsoluteCoords, \
     PhotometricDistort, Expand, RandomSampleCrop, RandomMirror, \
     ToPercentCoords, Resize, SubtractMeans
 
-from make_datapath import make_datapath_list
-from extract_inform_annotation import Anno_xml
+from data.data_loader.make_datapath import make_datapath_list
+from data.data_loader.extract_inform_annotation import Anno_xml
 from lib import *
 
 class DataTransform():

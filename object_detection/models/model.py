@@ -1,6 +1,6 @@
 from lib import *
-from l2_norm import L2Norm
-from default_box import DefBox
+from data.data_loader.l2_norm import L2Norm
+from models.default_box import DefBox
 
 
 def create_vgg():

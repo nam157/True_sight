@@ -1,6 +1,6 @@
 from lib import *
-from model import SSD
-from transform import DataTransform
+from models.model import SSD
+from data.data_loader.transform import DataTransform
 
 
 classes = ["aeroplane", "bicycle", "bird",  "boat", "bottle", 

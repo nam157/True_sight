@@ -1,5 +1,5 @@
 from lib import *
-from make_datapath import make_datapath_list
+from data.data_loader.make_datapath import make_datapath_list
 
 
 class Anno_xml(object):
