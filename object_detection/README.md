@@ -18,6 +18,6 @@ root_path = "..."
 exec(open("./train.py").read())
 ```
 
-### Training on kaggle
+### Notebook-Kaggle 
 https://www.kaggle.com/acousticmusic/ai4theblind/notebook
 
