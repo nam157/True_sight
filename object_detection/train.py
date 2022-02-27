@@ -13,12 +13,12 @@ from models.model import SSD
 from multiboxloss import MultiBoxLoss
 
 
-device = torch.device("cpu")
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print("device:", device)
 torch.backends.cudnn.benchmark = True
 
 # dataloader
-root_path = "./data/VOC2007"
+root_path = "./data/VOC2007" #Thay doi duong dan den data
 train_img_list, train_anno_list, val_img_list, val_anno_list = make_datapath_list(root_path)
 
 classes = ["aeroplane", "bicycle", "bird",  "boat", "bottle", 
@@ -51,7 +51,7 @@ cfg = {
 }
 
 net = SSD(phase="train", cfg=cfg)
-vgg_weights = torch.load("./data/weights/vgg16_reducedfc.pth")
+vgg_weights = torch.load("./data/weights/vgg16_reducedfc.pth") #Thay doi duong dan
 net.vgg.load_state_dict(vgg_weights)
 
 def weights_init(m):
@@ -138,7 +138,7 @@ def train_model(net, dataloader_dict, criterion, optimizer, num_epochs):
         epoch_train_loss = 0.0
         epoch_val_loss = 0.0
         if ((epoch+1) % 10 == 0):
-            torch.save(net.state_dict(), "./data/weights/ssd300_" + str(epoch+1) + ".pth")
+            torch.save(net.state_dict(), "ssd300_" + str(epoch+1) + ".pth")
 
 num_epochs = 100
 train_model(net, dataloader_dict, criterion, optimizer, num_epochs=num_epochs)
