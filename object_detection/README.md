@@ -19,5 +19,5 @@ exec(open("./train.py").read())
 ```
 
 ### Notebook-Kaggle 
-https://www.kaggle.com/acousticmusic/ai4theblind/notebook
+* [notebook1](https://www.kaggle.com/acousticmusic/ai4theblind/notebook)
 
