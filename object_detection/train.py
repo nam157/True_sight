@@ -1,8 +1,9 @@
-# dataloader
-# network -> SSD300
-# loss -> MultiBoxLoss
-# optimizer
-# training, validation
+#Các nhiệm vụ chúng ta sẽ triển khai
+#1. dataloader
+#2. network -> SSD300
+#3. loss -> MultiBoxLoss
+#4. optimizer
+#5. training, validation
 
 from lib import *
 from data.data_loader.make_datapath import make_datapath_list
@@ -140,5 +141,6 @@ def train_model(net, dataloader_dict, criterion, optimizer, num_epochs):
         if ((epoch+1) % 10 == 0):
             torch.save(net.state_dict(), "ssd300_" + str(epoch+1) + ".pth")
 
+ #Training
 num_epochs = 100
 train_model(net, dataloader_dict, criterion, optimizer, num_epochs=num_epochs)
