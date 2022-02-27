@@ -3,7 +3,7 @@
 ```python
 exec(open("./data/data_loader/prepare_data.py").read())
 ```
-### weights VGG16
+#### weights VGG16
 ```python
 wget https://s3.amazonaws.com/amdegroot-models/vgg16_reducedfc.pth
 ```
@@ -17,4 +17,7 @@ root_path = "..."
 ```python
 exec(open("./train.py").read())
 ```
+
+### Training on kaggle
+https://www.kaggle.com/acousticmusic/ai4theblind/notebook
 
