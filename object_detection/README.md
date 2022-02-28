@@ -17,7 +17,10 @@ root_path = "..."
 ```python
 exec(open("./train.py").read())
 ```
-
+### Run test
+```python
+exec(open("Inference/inference.py").read())
+```
 ### Notebook-Kaggle 
 * [notebook1](https://www.kaggle.com/acousticmusic/ai4theblind/notebook)
 
