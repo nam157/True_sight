@@ -63,3 +63,14 @@ def train(loader, net, criterion, optimizer, device, debug_steps=100, epoch=-1):
 
 #### Inference
 ### -------------------------------
+
+
+
+#### Retrain
+##### Thêm đoạn code này vào trong file traning.py
+```python
+#Khởi tạo model
+net = create_mobilenetv1_ssd(num_classes = 21)
+#pre-trained
+net.init_from_pretrained_ssd('/content/ai4theblind/object_detection/Mobilenetv1-SSD/mobilenet-v1-ssd-mp-0_675.pth')
+```
