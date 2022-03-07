@@ -62,7 +62,9 @@ def train(loader, net, criterion, optimizer, device, debug_steps=100, epoch=-1):
 ```
 
 #### Inference
-### -------------------------------
+```python
+!python Inference/inference_pipeline.ipynb
+```
 
 
 
