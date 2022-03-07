@@ -68,6 +68,8 @@ def train(loader, net, criterion, optimizer, device, debug_steps=100, epoch=-1):
 
 #### Retrain
 ##### Thêm đoạn code này vào trong file traning.py
+###### Tải weights ở chỗ này [URL](https://storage.googleapis.com/models-hao/mobilenet-v1-ssd-mp-0_675.pth)
+
 ```python
 #Khởi tạo model
 net = create_mobilenetv1_ssd(num_classes = 21)
