@@ -79,8 +79,9 @@ def test(loader, net, criterion, device):
 
 
 if __name__ == "__main__":
-    net = create_mobilenetv1_ssd(num_classes = 21)
-
+    
+    print("-----"*20)
+    print('load data')
     #Config data
     train_transform = TrainAugmentation(config.image_size, config.image_mean, config.image_std)
     target_transform = MatchPrior(config.priors, config.center_variance,config.size_variance, 0.5)
@@ -88,16 +89,21 @@ if __name__ == "__main__":
 
     #Load dataset
     #1. Load data train
-    root_path = 'C:/Users/nguye/OneDrive/Desktop/ai4theblind/dataset/VOC2007'
-    datasets = VOCDataset(root_path,transform=train_transform,target_transform=target_transform)
-    train_dataset = ConcatDataset(datasets)
+    root_path = '/content/dataset/VOCdevkit/VOC2012'
+    train_dataset = VOCDataset(root_path,transform=train_transform,target_transform=target_transform)
+#     train_dataset = ConcatDataset(datasets)
     train_loader = DataLoader(train_dataset, batch_size = 16,num_workers=6,shuffle=True)
 
     #2. Load data validation
     val_dataset = VOCDataset(root_path, transform=test_transform, target_transform=target_transform, is_test=True)
     val_loader = DataLoader(val_dataset, batch_size = 16,num_workers=6,shuffle=True)
-
-
+    
+    print("-----"*20)
+    print('load model')
+    #model
+    net = create_mobilenetv1_ssd(num_classes = 21)
+    #pre-trained
+    net.init_from_pretrained_ssd('/content/ai4theblind/object_detection/Mobilenetv1-SSD/mobilenet-v1-ssd-mp-0_675.pth')
     #Loss, optimizer
     net.to(DEVICE)
 
@@ -105,7 +111,8 @@ if __name__ == "__main__":
                              center_variance=0.1, size_variance=0.2, device=DEVICE)
     optimizer = torch.optim.SGD(net.parameters(), lr=1e-3, momentum=0.9,
                                 weight_decay=5e-4)
-
+    print("-----"*20)
+    print('Training')
     #Training
     num_epochs = 1000
     for epoch in range(1,num_epochs):
@@ -118,5 +125,5 @@ if __name__ == "__main__":
                 f"Validation Regression Loss {val_regression_loss:.4f}, " +
                 f"Validation Classification Loss: {val_classification_loss:.4f}"
             )
-            model_path = os.path.join('../Mobilenetv1-SSD/save_weights', f"Epoch-{epoch}.pth")
+            model_path = os.path.join('model_mobi_ssd', f"Epoch-{epoch}.pth")
             net.save(model_path)
