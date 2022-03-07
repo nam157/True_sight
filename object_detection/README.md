@@ -1,34 +1,7 @@
-
-
-
-
-### Prepare
-#### dataset VOC 2012
-```python
-exec(open("./data/data_loader/prepare_data.py").read())
-```
-#### weights VGG16
-```python
-wget https://s3.amazonaws.com/amdegroot-models/vgg16_reducedfc.pth
-```
-
-### Change path in file train.py
-```python
-root_path = "..."
-```
-
-### Run training 
-```python
-exec(open("./train.py").read())
-```
-### Run test
-```python
-exec(open("Inference/inference.py").read())
-```
-### Notebook-Kaggle 
+#### Notebook-Kaggle 
 * [notebook1](https://www.kaggle.com/acousticmusic/ai4theblind/notebook)
 
-### Result
+#### Result
 |Input                                  |Output                                       |
 |-------------------------------------- |---------------------------------------------|
 |![004545](https://user-images.githubusercontent.com/72034584/155994827-c36db51b-b368-4628-9a61-b4e80db4b005.jpg)|![img](https://user-images.githubusercontent.com/72034584/156599512-3087476a-11a9-43ad-9ad4-d686f4f90991.jpg)|
