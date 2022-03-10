@@ -33,7 +33,7 @@ def make_datapath_list(root_path):
 
 
 if __name__ == "__main__":
-    root_path = "./data/VOC2007/"
+    root_path = "./data/VOCdevkit/VOC2012/"
     train_img_list, train_annotation_list, val_img_list, val_annotation_list = make_datapath_list(root_path)
 
     print(len(train_img_list))
