@@ -1,7 +1,10 @@
 import torch
 import torch.nn as nn
 from torchvision.models.resnet import resnet50
-from torchvision.models.mobilenet import mobilenet_v2, InvertedResidual
+# from torchvision.models.mobilenet import mobilenet_v2, InvertedResidual
+from fastai import *
+from torchvision.models import * 
+from fastai.vision import *
 
 class Base(nn.Module):
     def __init__(self):
