@@ -55,7 +55,7 @@ scheduler = MultiStepLR(optimizer=optimizer,milestones=config.multistep,gamma = 
 #Tao folder chua log trong qua trinh traning
 if os.path.isdir(config.log_path):
         shutil.rmtree(config.log_path)
-    os.makedirs(config.log_path)
+os.makedirs(config.log_path)
 
 #Thu muc luu weight
 if not os.path.isdir(config.save_folder):
