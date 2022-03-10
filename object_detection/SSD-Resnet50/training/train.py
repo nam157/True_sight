@@ -1,6 +1,6 @@
 from tqdm.autonotebook import tqdm
 import torch
-from apex import amp
+# from apex import amp
 
 
 def train(model, train_loader, epoch, writer, criterion, optimizer, scheduler):
