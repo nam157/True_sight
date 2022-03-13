@@ -6,6 +6,9 @@
 |VGG-SSD                    |[here](https://drive.google.com/drive/folders/17E10B-lxBrPJkGrRWjRYBz9klvn5uNZl)|
 
 
+#### Loss
+[SSD-LOG](https://drive.google.com/drive/folders/1GcgNXswcJPnQ6pNkY6hek838V1rJDSC1)
+
 #### Notebook-Kaggle 
 * [notebook1](https://www.kaggle.com/acousticmusic/ai4theblind/notebook)
 
