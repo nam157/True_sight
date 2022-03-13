@@ -2,7 +2,7 @@ import torch
 from torchvision.datasets import CocoDetection
 from torch.utils.data.dataloader import default_collate
 import os
-from data_loader.pre_pare_data_coco import generate_dboxes,SSDTransformer
+from data_loader.transform_data_coco import generate_dboxes,SSDTransformer
 from torch.utils.data import DataLoader
 
 
