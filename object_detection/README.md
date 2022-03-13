@@ -1,5 +1,10 @@
 #### Save Weights
-https://drive.google.com/drive/folders/1GcgNXswcJPnQ6pNkY6hek838V1rJDSC1
+|Models                     |Weight                                                                          |
+|---------------------------|--------------------------------------------------------------------------------|
+|Mobilenetv1-SSD            |[here](https://drive.google.com/drive/folders/1-4fmQsCvQQUhEdYnL2zsC28uWn8Zrox9)|
+|Resnet-SSD                 |[here](https://drive.google.com/drive/folders/1L6IrWa8QI6WBo15iM9Yl30-w0UeqCAql)|
+|VGG-SSD                    |[here](https://drive.google.com/drive/folders/17E10B-lxBrPJkGrRWjRYBz9klvn5uNZl)|
+
 
 #### Notebook-Kaggle 
 * [notebook1](https://www.kaggle.com/acousticmusic/ai4theblind/notebook)
