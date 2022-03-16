@@ -11,7 +11,7 @@ from Loss import Loss
 import numpy as np
 from dataset import collate_fn, CocoDataset
 from Default_boxes import generate_dboxes
-import encoder
+from encoder import Encoder
 from torch.utils.tensorboard import SummaryWriter
 
 coco_classes = ["background", "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat",
