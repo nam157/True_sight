@@ -4,7 +4,7 @@ from PIL import Image
 import torch
 import torchvision.transforms as transforms
 from torchvision.ops.boxes import box_iou
-import encoder
+from encoder import Encoder
 
 
 class SSDCropping(object):
@@ -104,7 +104,7 @@ class SSDTransformer(object):
         self.size = size
         self.val = val
         self.dboxes = dboxes
-        self.encoder = encoder(self.dboxes)
+        self.encoder = Encoder(self.dboxes)
         self.crop = SSDCropping()
 
         self.hflip = RandomHorizontalFlip()

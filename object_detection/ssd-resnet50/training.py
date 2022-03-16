@@ -11,19 +11,14 @@ from Loss import Loss
 import numpy as np
 from dataset import collate_fn, CocoDataset
 from Default_boxes import generate_dboxes
-from encoder import Encoder
+import encoder
 from torch.utils.tensorboard import SummaryWriter
+import config
+import yaml
 
-coco_classes = ["background", "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat",
-                "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog",
-                "horse", "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella",
-                "handbag", "tie", "suitcase", "frisbee", "skis", "snowboard", "sports ball", "kite",
-                "baseball bat", "baseball glove", "skateboard", "surfboard", "tennis racket", "bottle",
-                "wine glass", "cup", "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange",
-                "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch", "potted plant",
-                "bed", "dining table", "toilet", "tv", "laptop", "mouse", "remote", "keyboard", "cell phone",
-                "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors",
-                "teddy bear", "hair drier", "toothbrush"]
+
+
+
 
 def train(model, train_loader, epoch, writer, criterion, optimizer, scheduler):
     model.train()
@@ -86,69 +81,58 @@ def evaluate(model, test_loader, epoch, writer, encoder, nms_threshold):
 
     writer.add_scalar("Test/mAP", coco_eval.stats[0], epoch)
 
-data_path =  'data/coco/'
-save_folder = 'trained_models'
-log_path = 'tensorboard/SSD'
 
-model = 'ssd'
-num_epochs = 1000
-batch_size = 16
-multistep = [43,54]
-lr = 0.0001
-momentum = 0.9
-weight_decay = 0.0005
-nms_threshold = 0.5
-num_workers = 6
+with open('Resnet-ssd/trainer_config.yaml', 'r', encoding="utf8") as stream:
+    opt = yaml.safe_load(stream)
+    #Load model
+    dboxes = generate_dboxes(model="ssd")
+    model = SSD(backbone=ResNet(), num_classes=len(config.coco_classes))
 
-#Load model
-dboxes = generate_dboxes(model="ssd")
-model = SSD(backbone=ResNet(), num_classes=len(coco_classes))
+    #Load dataset
+    train_set = CocoDataset(opt.data_path, 2017, "train", SSDTransformer(dboxes, (300, 300), val=False))
+    train_loader = DataLoader(train_set,batch_size=opt.batch_size,shuffle=True,num_workers=opt.num_workers)
+    test_set = CocoDataset(opt.data_path, 2017, "val", SSDTransformer(dboxes, (300, 300), val=True))
+    test_loader = DataLoader(test_set,batch_size=opt.batch_size,shuffle=False,num_workers=opt.num_workers)
 
-#Load dataset
-train_set = CocoDataset(data_path, 2017, "train", SSDTransformer(dboxes, (300, 300), val=False))
-train_loader = DataLoader(train_set,batch_size=batch_size,shuffle=True,num_workers=num_workers)
-test_set = CocoDataset(data_path, 2017, "val", SSDTransformer(dboxes, (300, 300), val=True))
-test_loader = DataLoader(test_set,batch_size=batch_size,shuffle=False,num_workers=num_workers)
+    encoder = encoder(dboxes)
 
-encoder = encoder(dboxes)
-
-lr = lr  * (batch_size / 32)
-criterion = Loss(dboxes)
-optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=momentum,
-                                weight_decay=weight_decay,
-                                nesterov=True)
-scheduler = MultiStepLR(optimizer=optimizer, milestones=multistep, gamma=0.1)
+    lr = opt.lr  * (opt.batch_size / 32)
+    criterion = Loss(dboxes)
+    optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=opt.momentum,
+                                    weight_decay=opt.weight_decay,
+                                    nesterov=True)
+    scheduler = MultiStepLR(optimizer=optimizer, milestones=opt.multistep, gamma=0.1)
 
 
-#Lưu các giá trị: loss - acc - tạo folder log_path
-if os.path.isdir(log_path):
-    shutil.rmtree(log_path)
-os.makedirs(log_path)
+    #Lưu các giá trị: loss - acc - tạo folder log_path
+    if os.path.isdir(opt.log_path):
+        shutil.rmtree(opt.log_path)
+    os.makedirs(opt.log_path)
 
-#Tạo folder save_folder
-if not os.path.isdir(save_folder):
-    os.makedirs(save_folder)
-#Load weight ra
-checkpoint_path = os.path.join(save_folder, "SSD.pth")
+    #Tạo folder save_folder
+    if not os.path.isdir(opt.save_folder):
+        os.makedirs(opt.save_folder)
+    #Load weight ra
+    checkpoint_path = os.path.join(opt.save_folder, "SSD.pth")
 
-writer = SummaryWriter(log_path)
+    writer = SummaryWriter(opt.log_path)
 
-#Nếu có file weight thì load ra còn không epoch_first = 0
-if os.path.isfile(checkpoint_path):
-    checkpoint = torch.load(checkpoint_path)
-    first_epoch = checkpoint["epoch"] + 1
-    model.module.load_state_dict(checkpoint["model_state_dict"])
-    scheduler.load_state_dict(checkpoint["scheduler"])
-    optimizer.load_state_dict(checkpoint["optimizer"])
-else:
-    first_epoch = 0
+    #Nếu có file weight thì load ra còn không epoch_first = 0
+    if os.path.isfile(checkpoint_path):
+        checkpoint = torch.load(checkpoint_path)
+        first_epoch = checkpoint["epoch"] + 1
+        model.module.load_state_dict(checkpoint["model_state_dict"])
+        scheduler.load_state_dict(checkpoint["scheduler"])
+        optimizer.load_state_dict(checkpoint["optimizer"])
+    else:
+        first_epoch = 0
 
-for epoch in range(first_epoch, num_epochs):
-    train(model, train_loader, epoch, writer, criterion, optimizer, scheduler)
-    evaluate(model, test_loader, epoch, writer, encoder, nms_threshold)
+    for epoch in range(first_epoch, opt.num_epochs):
+        train(model, train_loader, epoch, writer, criterion, optimizer, scheduler)
+        evaluate(model, test_loader, epoch, writer, encoder, opt.nms_threshold)
 
-    checkpoint = {"epoch": epoch,
-                  "model_state_dict": model.module.state_dict(),
-                  "optimizer": optimizer.state_dict(),
-                "scheduler": scheduler.state_dict()}
-    torch.save(checkpoint, checkpoint_path)
+        checkpoint = {"epoch": epoch,
+                    "model_state_dict": model.module.state_dict(),
+                    "optimizer": optimizer.state_dict(),
+                    "scheduler": scheduler.state_dict()}
+        torch.save(checkpoint, checkpoint_path)

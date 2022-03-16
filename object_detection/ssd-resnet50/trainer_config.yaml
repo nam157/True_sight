@@ -1,0 +1,15 @@
+#File config chứa các tham số training model
+
+data_path =  'data/coco/' #Đường dẫn chứa dataset
+save_folder = 'trained_models' #Đường dẫn lưu weight
+log_path = 'tensorboard/SSD' #Đường dẫn lưu các thông số hàm loss và độ chính xác mô hình
+
+model = 'ssd' #Tên mô hình sẽ triển khai
+num_epochs = 1000 #Số epoch dùng trong việc training
+batch_size = 16 #Mỗi lô sẽ có 16 tập dữ liệu trong dùng training
+multistep = [43,54] #Dùng trong việc cập nhật learning rate
+lr = 0.0001  #Learning rate ban đầu
+momentum = 0.9 #momentum dùng trong thuật toán tối ưu 
+weight_decay = 0.0005 #Giamr số learing rate sau thời gian training nhất định
+nms_threshold = 0.5 #Ngưỡng để xác định số bbox
+num_workers = 6
