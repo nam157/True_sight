@@ -8,7 +8,7 @@ import cv2
 from PIL import Image
 
 from Default_boxes import generate_dboxes
-import encoder as Encoder
+from encoder import Encoder
 from models import SSD, ResNet,coco_classes
 from imutils.video import FPS, WebcamVideoStream
 
