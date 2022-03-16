@@ -21,6 +21,7 @@ Dựa vào apis của tập dữ liệu coco, chúng ta trích xuất thông tin
 
 ## Training
 ##### Trong bài toán này, base network sử dụng mạng resnet 50 dùng trích xuất đặc trưng và kết hợp với mạng một số lớp.
+* Chỉnh sửa tham số training cho phù hợp ở file trainer_config.yaml
 ```python
 %run training.py
 ```
