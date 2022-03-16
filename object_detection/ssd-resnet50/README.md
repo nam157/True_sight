@@ -29,3 +29,7 @@ Dựa vào apis của tập dữ liệu coco, chúng ta trích xuất thông tin
 ```python
 %run inference_pipeline.py
 ```
+## Save weights
+|Models                           | Folder                        |
+|---------------------------------|-------------------------------|
+|Resnet50-ssd                     |[Here](https://drive.google.com/drive/u/0/folders/1L6IrWa8QI6WBo15iM9Yl30-w0UeqCAql)|
