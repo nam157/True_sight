@@ -1,6 +1,6 @@
 ### Khóa Luận Tốt Nghiệp
 
-### Refers
+### References
 * https://xailient.com/xai_blog/real-time-vehicle-detection-with-mobilenet-ssd-and-xailient/
 * https://viblo.asia/p/detect-object-su-dung-mo-hinh-ssd-WAyK84rnKxX
 * https://github.com/amdegroot/ssd.pytorch
