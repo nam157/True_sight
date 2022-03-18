@@ -15,71 +15,10 @@ import encoder
 from torch.utils.tensorboard import SummaryWriter
 import config
 import yaml
+import time
 
 
 
-
-
-def train(model, train_loader, epoch, writer, criterion, optimizer, scheduler):
-    model.train()
-    num_iter_per_epoch = len(train_loader)
-    progress_bar = tqdm(train_loader)
-    scheduler.step()
-    for i, (img, _, _, gloc, glabel) in enumerate(progress_bar):
-        if torch.cuda.is_available():
-            img = img.cuda()
-            gloc = gloc.cuda()
-            glabel = glabel.cuda()
-
-        ploc, plabel = model(img)
-        ploc, plabel = ploc.float(), plabel.float()
-        gloc = gloc.transpose(1, 2).contiguous()
-        loss = criterion(ploc, plabel, gloc, glabel)
-
-        progress_bar.set_description("Epoch: {}. Loss: {:.5f}".format(epoch + 1, loss.item()))
-
-        writer.add_scalar("Train/Loss", loss.item(), epoch * num_iter_per_epoch + i)
-
-        loss.backward()
-        optimizer.step()
-        optimizer.zero_grad()
-
-def evaluate(model, test_loader, epoch, writer, encoder, nms_threshold):
-    model.eval()
-    detections = []
-    category_ids = test_loader.dataset.coco.getCatIds()
-    for nbatch, (img, img_id, img_size, _, _) in enumerate(test_loader):
-        print("Parsing batch: {}/{}".format(nbatch, len(test_loader)), end="\r")
-        if torch.cuda.is_available():
-            img = img.cuda()
-        with torch.no_grad():
-            # Get predictions
-            ploc, plabel = model(img)
-            ploc, plabel = ploc.float(), plabel.float()
-
-            for idx in range(ploc.shape[0]):
-                ploc_i = ploc[idx, :, :].unsqueeze(0)
-                plabel_i = plabel[idx, :, :].unsqueeze(0)
-                try:
-                    result = encoder.decode_batch(ploc_i, plabel_i, nms_threshold, 200)[0]
-                except:
-                    print("No object detected in idx: {}".format(idx))
-                    continue
-
-                height, width = img_size[idx]
-                loc, label, prob = [r.cpu().numpy() for r in result]
-                for loc_, label_, prob_ in zip(loc, label, prob):
-                    detections.append([img_id[idx], loc_[0] * width, loc_[1] * height, (loc_[2] - loc_[0]) * width,
-                                       (loc_[3] - loc_[1]) * height, prob_,
-                                       category_ids[label_ - 1]])
-    detections = np.array(detections, dtype=np.float32)
-
-    coco_eval = COCOeval(test_loader.dataset.coco, test_loader.dataset.coco.loadRes(detections), iouType="bbox")
-    coco_eval.evaluate()
-    coco_eval.accumulate()
-    coco_eval.summarize()
-
-    writer.add_scalar("Test/mAP", coco_eval.stats[0], epoch)
 
 
 with open('Resnet-ssd/trainer_config.yaml', 'r', encoding="utf8") as stream:
@@ -94,6 +33,11 @@ with open('Resnet-ssd/trainer_config.yaml', 'r', encoding="utf8") as stream:
     test_set = CocoDataset(opt.data_path, 2017, "val", SSDTransformer(dboxes, (300, 300), val=True))
     test_loader = DataLoader(test_set,batch_size=opt.batch_size,shuffle=False,num_workers=opt.num_workers)
 
+    dataloader_dict ={
+                'train':train_loader,
+                'val':test_loader
+                    }
+    DEVICE = torch.device('cuda' if torch.cuda.is_available else 'cpu')
     encoder = encoder(dboxes)
 
     lr = opt.lr  * (opt.batch_size / 32)
@@ -103,6 +47,8 @@ with open('Resnet-ssd/trainer_config.yaml', 'r', encoding="utf8") as stream:
                                     nesterov=True)
     scheduler = MultiStepLR(optimizer=optimizer, milestones=opt.multistep, gamma=0.1)
 
+    model.to(DEVICE)
+    criterion.to(DEVICE)
 
     #Lưu các giá trị: loss - acc - tạo folder log_path
     if os.path.isdir(opt.log_path):
@@ -126,13 +72,78 @@ with open('Resnet-ssd/trainer_config.yaml', 'r', encoding="utf8") as stream:
         optimizer.load_state_dict(checkpoint["optimizer"])
     else:
         first_epoch = 0
+    
 
+    iteration = 1
+    epoch_train_loss = 0.0
+    epoch_val_loss = 0.0
+    logs = []
     for epoch in range(first_epoch, opt.num_epochs):
-        train(model, train_loader, epoch, writer, criterion, optimizer, scheduler)
-        evaluate(model, test_loader, epoch, writer, encoder, opt.nms_threshold)
+        t_epoch_start = time.time()
+        t_iter_start = time.time()
+        print("---"*20)
+        print("Epoch {}/{}".format(epoch, opt.num_epochs))
+        print("---"*20)
+        for phase in ["train", "val"]:
+            if phase == "train":
+                model.train()
+                print("(Training)")
+            else:
+                #10 epoch minh se kiem dinh 1 lan
+                if (epoch+1) % 10 == 0:
+                    model.eval() 
+                    print("---"*10)
+                    print("(Validation)")
+                else:
+                    continue
+            for images, _,_,gloc, glabel in dataloader_dict[phase]:
+                # move to GPU
+                images = images.to(DEVICE)
+                gloc = gloc.to(DEVICE)
+                glabel = glabel.to(DEVICE)
+                # init optimizer
+                optimizer.zero_grad()
+                #forward: dua anh vao trong mang cua minh
+                with torch.set_grad_enabled(phase=="train"):
+                    ploc, plabel = model(images)
+                    ploc, plabel = ploc.float(), plabel.float()
+                    gloc = gloc.transpose(1, 2).contiguous()
+                    loss = criterion(ploc, plabel, gloc, glabel)
+    
+                    if phase == "train":
+                        loss.backward() # calculate gradient
+                        torch.nn.utils.clip_grad_value_(model.parameters(), clip_value=2.0)
+                        optimizer.step() # update parameters
 
-        checkpoint = {"epoch": epoch,
-                    "model_state_dict": model.module.state_dict(),
-                    "optimizer": optimizer.state_dict(),
-                    "scheduler": scheduler.state_dict()}
-        torch.save(checkpoint, checkpoint_path)
+                        if (iteration % 10) == 0:
+                            t_iter_end = time.time()
+                            duration = t_iter_end - t_iter_start
+                            print("Iteration {} || Loss: {:.4f} || 10iter: {:.4f} sec".format(iteration, loss.item(), duration))
+                            t_iter_start = time.time()
+                        epoch_train_loss += loss.item()
+                        iteration += 1
+                        writer.add_scalar("Train/Loss", loss.item(), epoch)
+                    else:
+                        epoch_val_loss += loss.item()
+                        writer.add_scalar("val/Loss", loss.item(), epoch)
+                        
+        t_epoch_end = time.time()
+        print("---"*20)
+        print("Epoch {} || epoch_train_loss: {:.4f} || Epoch_val_loss: {:.4f}".format(epoch+1, epoch_train_loss, epoch_val_loss))           
+        print("Duration: {:.4f} sec".format(t_epoch_end - t_epoch_start))
+        t_epoch_start = time.time()
+
+        log_epoch = {"epoch": epoch+1, "train_loss": epoch_train_loss, "val_loss": epoch_val_loss}
+        logs.append(log_epoch)
+        import pandas as pd
+        df = pd.DataFrame(logs)
+        df.to_csv("./data/ssd_logs.csv")
+        epoch_train_loss = 0.0
+        epoch_val_loss = 0.0
+        if ((epoch+1) % 10 == 0):
+            checkpoint = {"epoch": epoch,
+                        "model_state_dict": model.module.state_dict(),
+                        "optimizer": optimizer.state_dict(),
+                        "scheduler": scheduler.state_dict()}
+            torch.save(checkpoint, checkpoint_path)
+        
