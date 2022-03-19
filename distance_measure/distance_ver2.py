@@ -46,14 +46,6 @@ def pre_pare(frame):
 
 #--------------------Distance measure---------------
 # Gọi 2 camera ra 
-
-# Stereo vision các thông số cần setup
-frame_rate = 120    #Camera frame rate (maximum at 120 fps)
-B = 9               #Distance between the cameras [cm]
-f = 8               #Camera lense's focal length [mm]
-alpha = 56.6        #Camera field of view in the horisontal plane [degrees]
-
-# Gọi 2 camera ra 
 cap_right = cv2.VideoCapture(0)                    
 cap_left =  cv2.VideoCapture(1)
 # Stereo vision các thông số cần setup
@@ -125,9 +117,7 @@ while(cap_right.isOpened() and cap_left.isOpened()):
                 config.boxes[category]['ymin_right'] = ymin
                 config.boxes[category]['ymax_right'] = ymax
                 config.boxes[category]['prob_right'] = round(pr,2)
-        print(config.CENTERS)
-        print(config.boxes)
-        # print(config.CENTERS['person']['center_point_right'])
+       
         if len(loc_left) < 0 or len(loc_right) < 0:
             cv2.putText(output_right_frame, "TRACKING LOST", (75,50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255),2)
             cv2.putText(output_left_frame, "TRACKING LOST", (75,50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255),2)
