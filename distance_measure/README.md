@@ -4,8 +4,8 @@
 ![image](https://github.com/nam157/ai4theblind/blob/main/distance_measure/Images/congthuc.png)
 
 #### Results 1:
-![image](https://im.ezgif.com/tmp/ezgif-1-0b42449dd0.gif)
 
+![image](https://github.com/nam157/ai4theblind/blob/main/distance_measure/Images/ezgif-1-538cc99cb6.gif)
 
 
 ### CÁCH 2: tính toán theo tam giác
