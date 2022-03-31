@@ -10,7 +10,8 @@
 
 ## Một số kết quả khả quan:
 
-![ezgif-5-f0d2ef8c9d](https://user-images.githubusercontent.com/72034584/161087569-72a65128-b5b3-4d04-bc7f-335d14aceefc.gif)
+![image](https://github.com/nam157/ai4theblind/blob/main/distance_measure/Images/ezgif-5-f0d2ef8c9d.gif)
+
 
 * focal length (f)
 * radius of marker in the image plane (r) 
