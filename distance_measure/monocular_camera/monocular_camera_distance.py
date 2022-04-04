@@ -1,11 +1,12 @@
 import sys
-sys.path.insert(0,'../')
+sys.path.insert(0,'../../object_detection')
 from library import *
-from test import draw_object_info,pre_pare
+from test import Model
 import os
 import cv2,json
-import pyttsx3
 
+
+model = Model()
 
 
 def focal_length_finder(measured_distance, real_width, width_in_rf):       
@@ -26,16 +27,16 @@ info_focal_length = {}
 for image_name in os.listdir('../distance_ver3/data_refers/'):
     img_path = os.path.join('../distance_ver3/data_refers/',image_name)
     ref_image = cv2.imread(img_path)
-    frame,center_point_iphone,width,category = draw_object_info(ref_image)
+    frame,center_point_iphone,width,category = model.draw_object_info(ref_image)
     focal_length = focal_length_finder(info_calculate[category]['KNOWN_DISTANCE'],info_calculate[category]['KNOWN_WIDTH'],width)
     info_focal_length[category] = focal_length
 
 print(info_focal_length)
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 while True:
     ret,frame = cap.read()
-    loc,label,prob = pre_pare(frame)
+    loc,label,prob = model.pre_pare(frame)
     if len(loc) > 0:
         height,width,channel = frame.shape
         loc[:, 0::2] *= width

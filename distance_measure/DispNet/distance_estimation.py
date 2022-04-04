@@ -1,7 +1,7 @@
 
 import sys
-
-sys.path.append('C:/Users/nguye/OneDrive/Desktop/ai4theblind/Resnet-ssd/')
+sys.path.insert(0,'../../object_detection')
+from library import *
 import numpy as np
 import torch
 from transform import SSDTransformer
@@ -41,10 +41,10 @@ def pre_pare(frame):
         return loc,label,prob
 #----------------------------------------------------------------------
 def depth_to_distance(depth):
-        # loaded_model = pickle.load(open('model_distance.sav', 'rb'))
-        # depth = np.array([[depth]])
-        # return loaded_model.predict(depth)
-    return ((-39.89694666*(depth**2)) + (-53.87434965*depth) + 111.01373772611525)
+    loaded_model = pickle.load(open('model_distance.sav', 'rb'))
+    distance = loaded_model.predict(np.array([[depth]]))
+    return distance
+   
     
 #-----------------------------------------------------------------------
 # Load a MiDas model for depth estimation
@@ -68,7 +68,7 @@ else:
     transform = midas_transforms.small_transform
 
 #------------------------------------------------------------------------
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 while True:
     ret,img = cap.read()
@@ -95,20 +95,23 @@ while True:
         prediction = torch.nn.functional.interpolate(prediction.unsqueeze(1),size=img.shape[:2],   mode="bicubic",align_corners=False,).squeeze()
     depth_map = prediction.cpu().numpy()
     depth_map = cv2.normalize(depth_map, None, 0, 1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
-    try:
-        depth = depth_map[int(center_point[1]),int(center_point[0])]
-        print(depth)
-        distance = depth_to_distance(depth)
-        cv2.circle(img,(int(center_point[0]),int(center_point[1])),3,(255,255,0),2)
-        cv2.putText(img, f'Distance: {round(distance,2)}',(int(center_point[0]),int(center_point[1])), cv2.FONT_HERSHEY_PLAIN, 1,(123, 0, 255), 1)
-        print('Convert depth map to distance: ',distance)
-    except:
-        print('Không tìm thấy bbox trong khung hình')
-
+    
     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     depth_map = (depth_map*255).astype(np.uint8)
     depth_map = cv2.applyColorMap(depth_map , cv2.COLORMAP_MAGMA)
-    
+    # try:
+    #     # depth = depth_map[int(center_point[1]),int(center_point[0])]
+        
+        
+    # except:
+    #     print('Không tìm thấy bbox trong khung hình')
+    depth = np.median(depth_map[ymin:ymax,xmin:xmax])
+    print(depth)
+    distance = depth_to_distance(depth = depth)
+        # distance = depth_to_distance(depth)
+    cv2.circle(img,(int(center_point[0]),int(center_point[1])),3,(255,255,0),2)
+    cv2.putText(img, f'Distance: {distance}',(int(center_point[0]),int(center_point[1])), cv2.FONT_HERSHEY_PLAIN, 1,(123, 0, 255), 1)
+    print('Convert depth map to distance: ',distance)
     cv2.imshow('test',img)
     cv2.imshow('depth_map',depth_map)
 
