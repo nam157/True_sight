@@ -1,0 +1,174 @@
+[
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-hdpi_ic_switch_camera_white_48dp.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-hdpi/ic_switch_camera_white_48dp.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-xxxhdpi_ic_settings_white_24dp.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-xxxhdpi/ic_settings_white_24dp.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-xhdpi_ic_settings_white_24dp.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-xhdpi/ic_settings_white_24dp.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-xhdpi_ic_switch_camera_white_48dp.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-xhdpi/ic_switch_camera_white_48dp.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable_logo_mlkit.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable/logo_mlkit.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-xxxhdpi_ic_switch_camera_white_48dp.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-xxxhdpi/ic_switch_camera_white_48dp.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_activity_vision_entry_choice.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/activity_vision_entry_choice.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-xhdpi_ic_switch_camera_white_48dp_inset.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-xhdpi/ic_switch_camera_white_48dp_inset.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout-land_activity_vision_cameraxsource_demo.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout-land/activity_vision_cameraxsource_demo.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable_list_item_background.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable/list_item_background.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout-land_activity_vision_live_preview.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout-land/activity_vision_live_preview.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout-land_activity_vision_camerax_live_preview.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout-land/activity_vision_camerax_live_preview.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/menu_camera_button_menu.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/menu/camera_button_menu.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_activity_vision_camerax_live_preview.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/activity_vision_camerax_live_preview.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-mdpi_ic_switch_camera_white_48dp.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-mdpi/ic_switch_camera_white_48dp.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-hdpi_ic_settings_white_24dp.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-hdpi/ic_settings_white_24dp.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-mdpi_ic_settings_white_24dp.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-mdpi/ic_settings_white_24dp.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/xml_preference_live_preview_quickstart.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/xml/preference_live_preview_quickstart.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-xxhdpi_ic_switch_camera_white_48dp.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-xxhdpi/ic_switch_camera_white_48dp.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-xxhdpi_ic_switch_camera_white_48dp_inset.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-xxhdpi/ic_switch_camera_white_48dp_inset.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_activity_settings.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/activity_settings.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-mdpi_ic_switch_camera_white_48dp_inset.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-mdpi/ic_switch_camera_white_48dp_inset.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_toggle_style.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/toggle_style.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/xml_preference_still_image.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/xml/preference_still_image.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-hdpi_ic_switch_camera_white_48dp_inset.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-hdpi/ic_switch_camera_white_48dp_inset.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_activity_vision_cameraxsource_demo.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/activity_vision_cameraxsource_demo.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-xxhdpi_ic_settings_white_24dp.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-xxhdpi/ic_settings_white_24dp.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_activity_still_image.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/activity_still_image.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/drawable-xxxhdpi_ic_switch_camera_white_48dp_inset.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/drawable-xxxhdpi/ic_switch_camera_white_48dp_inset.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_settings_style.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/settings_style.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_activity_chooser.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/activity_chooser.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_spinner_style.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/spinner_style.xml"
+    },
+    {
+        "merged": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/build/intermediates/merged_res/debug/layout_activity_vision_live_preview.xml.flat",
+        "source": "/home/qquan/Downloads/vision-quickstart-20220323T042636Z-001/vision-quickstart/app/src/main/res/layout/activity_vision_live_preview.xml"
+    }
+]
